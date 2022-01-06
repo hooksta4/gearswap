@@ -1,0 +1,158 @@
+<ashitacast>
+	<settings> <!--Contains settings specific to this xml, must be set to true/false to override default-->
+		<buffupdate>true</buffupdate> <!--Determines if your idlegear will be parsed when you gain/lose a buff. Default: TRUE -->
+		<statusupdate>true</statuspdate> <!--Determines if your idlegear will be parsed when you change status(stand/rest/engage/etc).  Default: TRUE -->
+		<hpupdate>false</hpupdate> <!--Determines if your idlegear will be parsed when your HP % changes.  Default: TRUE -->
+		<autoupdate>true</autoupdate> <!--Determines if your idlegear will be parsed on outgoing status updates(roughly every 350ms).  Default: TRUE-->
+	</settings>
+	<init>       
+        <if p_mainjob="DNC"><setvar name="macrobook" value="12" /><setvar name="macropage" value="1" /><setvar name="lockstyleset" value="9" /></if>
+        <command delay="1500">/macro book $macrobook</command>
+        <command delay="3000">/macro set $macropage</command>
+        <command delay="4500">/echo *** Job is %p_job. Macros set to Book $macrobook, Page $macropage. ***</command>
+		<command delay='6000'>/lockstyleset $lockstyleset</command>
+    </init>
+	<sets>
+		<set name="TP-acc">
+			
+			<ammo>Black Tathlum</ammo>
+			<head>Optical Hat</head>
+			<body>Enkidu's Harness</body>
+			<hands>Dusk Gloves +1</hands>
+			<legs>Ebon Brais</legs>
+			<feet>Dusk Ledelsens +1</feet>
+			<neck>Love Torque</neck>
+			<waist>Virtuoso Belt</waist>
+			<ear1>Suppanomimi</ear1>
+			<ear2>Sarabande Earring</ear2>
+			<ring1>Rajas Ring</ring1>
+			<ring2>Zilant Ring</ring2>
+			<back>Etoile Cape</back>
+		</set>
+		<set name="EVA">
+			
+			<ammo>Black Tathlum</ammo>
+			<head>Optical Hat</head>
+			<body>Enkidu's Harness</body>
+			<hands>Patrician's Cuffs</hands>
+			<legs>Ebon Brais</legs>
+			<feet>Dance Shoes +1</feet>
+			<neck>Love Torque</neck>
+			<waist>Scouter's Rope</waist>
+			<ear1>Suppanomimi</ear1>
+			<ear2>Evasion Earring</ear2>
+			<ring1>Rajas Ring</ring1>
+			<ring2>Zilant Ring</ring2>
+			<back>Corse Cape</back>
+		</set>
+		<set name="TP">
+			<main augment="S18212542050327">Mandau</main>
+			<sub>Papilio Kirpan</sub>
+			<ammo>Black Tathlum</ammo>
+			<head>Walahra Turban</head>
+			<body>Rapparee Harness</body>
+			<hands>Dusk Gloves +1</hands>
+			<legs>Enkidu's Subligar</legs>
+			<feet>Dusk Ledelsens +1</feet>
+			<neck>Love Torque</neck>
+			<waist>Velocious Belt</waist>
+			<ear1>Suppanomimi</ear1>
+			<ear2>Brutal Earring</ear2>
+			<ring1>Rajas Ring</ring1>
+			<ring2>Zilant Ring</ring2>
+			<back>Cuchulain's Mantle</back>
+		</set>
+		<set name="Waltz">
+			<ammo>White Tathlum</ammo>
+			<head>Etoile Tiara +1</head>
+			<body>Dancer's Casaque</body>
+			<hands>Marine F Gloves</hands>
+			<legs>Etoile Tights +1</legs>
+			<feet>Dance Shoes +1</feet>
+			<neck>Bird Whistle</neck>
+			<waist>Corsette +1</waist>
+			<ear1>Roundel Earring</ear1>
+			<ear2>Sarabande Earring</ear2>
+			<ring1>Veela Ring</ring1>
+			<ring2>Heavens Ring</ring2>
+			<back>Etoile Cape</back>
+		</set>
+		<set name="WS">
+			<main augment="S18212542050327">Mandau</main>
+			<sub>Papilio Kirpan</sub>
+			<ammo>Black Tathlum</ammo>
+			<head>Gnadbhod's Helm</head>
+			<body>Enkidu's Harness</body>
+			<hands>Alkyoneus's Brc.</hands>
+			<legs>Etoile Tights +1</legs>
+			<feet>Marine F Boots</feet>
+			<neck>Fotia Gorget</neck>
+			<waist>Warwolf Belt</waist>
+			<ear1>Tmph. Earring +1</ear1>
+			<ear2>Tmph. Earring +1</ear2>
+			<ring1>Rajas Ring</ring1>
+			<ring2>Strigoi Ring</ring2>
+			<back>Cerb. Mantle +1</back>
+		</set>
+		<set name="Steps">
+			<main augment="S18212542050327">Mandau</main>
+			<sub>Papilio Kirpan</sub>
+			<ammo>Black Tathlum</ammo>
+			<head>Optical Hat</head>
+			<body>Avalon Breastplate</body>
+			<hands>Dancer's Bangles</hands>
+			<legs>Oily Trousers</legs>
+			<feet>Etoile Shoes +1</feet>
+			<neck>Peacock Amulet</neck>
+			<waist>Virtuoso Belt</waist>
+			<ear1>Sarabande Earring</ear1>
+			<ear2>Choreia Earring</ear2>
+			<ring1>Toreador's Ring</ring1>
+			<ring2>Toreador's Ring</ring2>
+			<back>Etoile Cape</back>
+		</set>
+		<set name="idle">
+			<main augment="S18212542050327">Mandau</main>
+			<sub>Papilio Kirpan</sub>
+			<ammo>Black Tathlum</ammo>
+			<head>Empress Hairpin</head>
+			<body>Antares Harness</body>
+			<hands>Patrician's Cuffs</hands>
+			<legs>Denali Kecks</legs>
+			<feet>Dance Shoes +1</feet>
+			<neck>Orochi Nodowa +1</neck>
+			<waist>Scouter's Rope</waist>
+			<ear1>Novia Earring</ear1>
+			<ear2>Evasion Earring</ear2>
+			<ring1>Shadow Ring</ring1>
+			<ring2>Defending Ring</ring2>
+			<back>Corse Cape</back>
+		</set>
+		<set name="Jig">
+			<legs>Etoile Tights +1</legs>
+			<feet>Dancer's Shoes</feet>
+		</set> 
+	</sets>
+	<inputcommands>				
+	</inputcommands>
+	<idlegear>
+		<if p_status="idle"><equip set="idle" /></if>
+		<if p_status="engaged"><equip set="TP" /></if>
+	</idlegear>
+	<jobability>
+		<if ad_name="*Waltz*"><equip set="Waltz" /></if>
+		<if ad_name="Quickstep"><equip set="Steps" /></if>
+		<if ad_name="Box Step"><equip set="Steps" /></if>
+		<if ad_name="Stutter Step"><equip set="Steps" /></if>
+		<if ad_name="Violent Flourish"><equip><body>Etoile Casaque +1</body></equip></if>
+		<if ad_name="*Jig*"><equip set="Jig" /></if>
+		<if ad_name="*Samba*"><equip><head>Dancer's Tiara</head></equip></if>
+	</jobability>	
+	<weaponskill>
+		<if ad_name="Dancing Edge"><equip set="WS" /></if>
+		<if ad_name="Evisceration"><equip set="WS" /></if>
+		<if ad_name="Shark Bite"><equip set="WS" /></if>
+		<if ad_name="Mercy Stroke"><equip set="WS" /></if>
+		<if ad_name="Pyrrhic Kleos"><equip set="WS" /></if>
+	</weaponskill>	
+</ashitacast>	
