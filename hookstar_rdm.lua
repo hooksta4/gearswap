@@ -45,6 +45,7 @@
         head        = "Warlock's Chapeau",
         body        = "Dls. Tabard +1",
         left_ear    = "Loquac. Earring",
+		waist		= "Ninrta's Sash",
 	}
  
      -- nuke set is for high damage nukes. +MAB and Int.
@@ -188,7 +189,7 @@
         left_ring   = "Rajas Ring",
         right_ring  = "Toreador's Ring",
         back        = "Cerberus Mantle +1",
-        waist       = "Velocious Belt",
+        waist       = "Ninurta's Sash",
         legs        = "Goliard Trews",
         feet        = "Dusk ledelsens +1",
 		ammo        = "White Tathlum"

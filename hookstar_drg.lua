@@ -8,7 +8,7 @@ function get_sets()
 	
 	main = "Gungnir", sub ="Pole Grip", ammo="Bibiki Seashell", head="Ace's Helm", neck="Orochi Nodowa +1", lear="Merman's Earring",
    	body="Nocturnus Mail", hands="homam manopolas", ring1="Rajas Ring", rear="Merman's Earring",
-   	waist="Velocious Belt", ring2="Serket Ring", back="Cerb. Mantle +1", legs="Blood Cuisses",
+   	waist="velocious belt", ring2="Serket Ring", back="Cerb. Mantle +1", legs="Blood Cuisses",
    	feet="Askar Gambieras"
 	}
 	
@@ -27,7 +27,7 @@ function get_sets()
 		legs		="Homam Cosciales",
 		feet		="Homam Gambieras",
 		neck		="Ancient Torque",
-		waist		="Velocious Belt",
+		waist		="velocious belt",
 		left_ear	="Ethereal Earring",
 		right_ear	="Brutal Earring",
 		left_ring	="Rajas Ring",
@@ -235,7 +235,7 @@ function get_sets()
 		body		= "Wym. Mail +1",
 		hands		= "Dusk Gloves +1",
 		feet		= "Homam Gambieras",
-		waist		= "Velocious Belt",
+		waist		= "velocious belt",
 		right_ring	= "Blitz Ring",
 		right_ear   = "Loquac. Earring",
     }

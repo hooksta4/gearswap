@@ -282,7 +282,7 @@ sets.fcasthaste={ -- fast cast and haste gear for those spells without potency m
 	head		= "Walahra Turban",
 	body		= "Goliard Saio",
 	right_ear	= "Loquacious Earring",
-	waist		= "Velocious Belt",
+	waist		= "Ninurta's Sash",
 	feet		= "Rostrum Pumps"
 }
 

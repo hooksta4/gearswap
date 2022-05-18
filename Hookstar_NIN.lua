@@ -45,7 +45,7 @@
         left_ring   = "Patronus Ring",
         right_ring  = "Shadow Ring",
         back        = "Boxer's Mantle",
-        waist       = "Velocious Belt",
+        waist       = "velocious belt",
         legs        = "Denali Kecks",
         feet        = "Ninja Kyahan"
     }
@@ -63,7 +63,7 @@
         left_ring   = "Rajas Ring",
         right_ring  = "Toreador's Ring",
         back        = "Cerb. Mantle +1",
-        waist       = "Velocious Belt",
+        waist       = "velocious belt",
         legs        = "Byakko's Haidate",
         feet        = "Fuma Sune-ate"
     }
@@ -116,7 +116,7 @@
         left_ring   = "Wivre Ring +1",
         right_ring  = "Wivre Ring +1",
         back        = "Boxer's Mantle",
-        waist       = "Velocious Belt",
+        waist       = "velocious belt",
         legs        = "Byakko's Haidate",
         feet        = "Dusk Ledelsens +1"
     }
@@ -135,7 +135,7 @@
         left_ring   = "Omn. Ring +1",
         right_ring  = "Omn. Ring +1",
         back        = "Astute Cape",
-        waist       = "Velocious Belt",
+        waist       = "velocious belt",
         legs        = "Denali Kecks",
         feet        = "Kog. Kyahan +1"
     }
@@ -346,4 +346,4 @@ function self_command(m)
  eva = false
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
- send_command('wait 1;gs equip fashion;wait 1;input /lockstyle on;wait 1;gs equip idle')
+ send_command('wait 1;input /lockstyleset 15;wait 1;input /lockstyle on;wait 1;gs equip idle')

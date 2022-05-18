@@ -13,9 +13,9 @@
  
      sets.fashion = {
         main        = "Mekki shakki",
-        sub         = "Axe Grip",
-        range       = "Annihilator",
-        ammo        = "Silver Bullet",
+       sub         = "Axe Grip",
+--        range       = "Annihilator",
+--        ammo        = "Silver Bullet",
         head        = "Maat's Cap",
         body        = "Kyudogi +1",
         hands       = "Blood Finger Gauntlets",

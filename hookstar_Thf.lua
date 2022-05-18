@@ -56,9 +56,9 @@ function get_sets()
 		hands		= "Dusk Gloves +1",
 		legs		= "Homam Cosciales",
 		feet		= "Homam Gambieras",
-		waist		= "Velocious Belt",
+		waist		= "velocious belt",
 		back		= "Cerb. Mantle +1",
-		neck		= "Harmonia's Torque",--"Tiercel Necklace",
+		neck		= "Tiercel Necklace",--"Tiercel Necklace",
 		left_ring	= "Rajas Ring",
 		right_ring	= "Toreador's Ring",
 		left_ear	= "Suppanomimi",
@@ -67,7 +67,7 @@ function get_sets()
 	
 	sets.melee.medium = set_combine(sets.melee.easy,{
 	-- 385/378 acc, 24% haste
-		neck		= "Ancient Torque",
+		neck		= "Love Torque",
 		back		= "Cuchulain's Mantle",
 		left_ring	= "Toreador's Ring",
 		hands		= "Homam Manopolas"
@@ -85,7 +85,7 @@ function get_sets()
 		hands		= "Enkidu's Mittens",
 		legs		= "Oily Trousers",
 		feet		= "Homam Gambieras",
-		neck		= "Ancient Torque",
+		neck		= "Love Torque",
 		waist		= "Virtuoso Belt",
 		back		= "Cuchulain's Mantle",
 		left_ring	= "Toreador's Ring",
@@ -272,7 +272,7 @@ function get_sets()
 		feet		= "Homam Gambieras",
 		legs		= "Homam Cosciales",
 		neck		= "Tiercel Necklace",
-		waist		= "Velocious Belt",
+		waist		= "velocious belt",
 		right_ear   = "Loquac. Earring",
 	}
 	
