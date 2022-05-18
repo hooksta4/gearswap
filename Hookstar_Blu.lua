@@ -68,7 +68,7 @@ Tristamgreen BLU v2 - 2021
 		legs		= "Homam Cosciales",
 		feet		= "Homam Gambieras",
 		neck		= "Peacock Amulet",
-		waist		= "Velocious Belt",
+		waist		= "Ninurta's Sash",
 		left_ear	= "Brutal Earring",
 		right_ear	= "Ethereal Earring",
 		right_ring	= "Toreador's Ring",
@@ -183,7 +183,7 @@ Tristamgreen BLU v2 - 2021
 		feet		= "Homam Gambieras",
         legs        = "Homam Cosciales",
         body        = "Nashira Manteel",
-		waist		= "Velocious Belt"
+		waist		= "Ninurta's Sash"
 	}
     
         -- *** Enhancing and Healing Sets ***
@@ -288,7 +288,7 @@ Tristamgreen BLU v2 - 2021
         left_ring   = "Antica Ring",
         right_ring  = "Celestial Ring",
         back        = "Hecate's Cape",
-        waist       = "Velocious Belt",
+        waist       = "Ninurta's Sash",
         legs        = "Homam Cosciales",
         feet        = "Homam Gambieras"
     }
@@ -311,7 +311,7 @@ Tristamgreen BLU v2 - 2021
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
         back        = "Altruistic Cape",
-        waist       = "Velocious Belt",
+        waist       = "Ninurta's Sash",
         legs        = "Denali Kecks",
         feet        = "Homam Gambieras"
     }
@@ -327,7 +327,7 @@ Tristamgreen BLU v2 - 2021
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
         back        = "Merciful Cape",
-        waist       = "Velocious Belt",
+        waist       = "Ninurta's Sash",
         legs        = "Mahatma Slops",
         feet        = "Homam Gambieras"
     }

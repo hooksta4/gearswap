@@ -58,7 +58,7 @@
         right_ear   = "Merman's Earring",
         body        = "Avalon Breastplate",
         hands       = "Choral Cuffs +1",
-        left_ring   = "Minerva's Ring",
+        left_ring   = "Patronus Ring",
         right_ring  = "Shadow Ring",
         back        = "Hexerei Cape",
         waist       = "Resolute Belt",

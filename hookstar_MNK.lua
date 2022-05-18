@@ -1,664 +1,473 @@
---[[*********************************************
-Enriquez_MNK
-
-Handles pre-cast and macro book change-to on load
-
-********************************************* --]]
+--[[ *************************************************************
+	TG's WAR lua - 2019
+************************************************************* --]]
  
- --[[ **********
-  Gearsets 
-************ --]]
+ --[[ ******************************************************
+  Gearsets - define the various sets of gear we'll wear.
+****************************************************** --]]
  
  function get_sets()
  
-     -- lockstyle set 
+     -- fashion set is for looking nice while lockstyled.
+    -- make sure you include your top-row equipment,
+    -- especially if you use a ranged or throwing weapon.
+    sets.fashion    =   {
+        main        =   "Spharai",
+        head        =   "Maat's Cap",
+        body        =   "Hachiryu Haramaki",
+        hands       =   "Hachiryu Kote",
+        legs        =   "Hachiryu Haidate",
+        feet        =   "Denali Gamashes"
+    }
+ 
+    -- idle set is worn when we're standing around doing
+    -- nothing.  we want evasion, damage reduction and movement speed+.
+	
+    sets.idle       =   {
+        ammo        =   "White Tathlum",
+        head        =   "Gnole Crown",
+        body        =   "Melee Cyclas +1",
+        hands       =   "Denali Wristbands",
+        legs        =   "Denali Kecks",
+        feet        =   "Herald's Gaiters",
+        neck        =   "Orochi Nodowa +1",
+        waist       =   "Scouter's Rope",
+        left_ear    =   "Novia Earring",
+        right_ear   =   "Triton Earring",
+        left_ring   =   "Shadow Ring",
+        right_ring  =   "Patronus Ring",
+        back        =   "Shadow Mantle"
+    }
+	
+	-- daylight idle set with lycopodium sash and feronia's bangles for super regen
+	
+	sets.daylight    =   {
+        hands       = "Feronia's Bangles",
+		waist		= "Lycopodium Sash"
+	}
+	 
+    -- engaged sets
+    
+    -- maximize haste and prioritize accuracy and attack second
+    sets.haste    =   {
+	    ammo        =   "White Tathlum",
+        head        =   "Walahra Turban",
+        body        =   "Hachiryu Haramaki",
+        hands       =   "Bandomusha Kote",
+        legs        =   "Byakko's Haidate",
+        feet        =   "Fuma Sune-Ate",
+        neck        =   "Faith Torque",
+        waist       =   "Black Belt",
+        left_ear    =   "Brutal Earring",
+        right_ear   =   "Merman's Earring",
+        left_ring   =   "Rajas Ring",
+        right_ring  =   "Toreador's Ring",
+        back        =   "Cerb. Mantle +1"
+    }
+    
+    -- full accuracy set
+    sets.accuracy   =   {
+        ammo        =   "Black Tathlum",
+        head        =   "Optical Hat",
+        body        =   "Hachiryu Haramaki",
+        hands       =   "Enkidu's Mittens",
+        legs        =   "Cobra Subligar",
+        feet        =   "Denali Gamashes",
+        neck        =   "Peacock Amulet",
+        waist       =   "Virtuoso Belt",
+        left_ear    =   "Pixie Earring",
+        right_ear   =   "Brutal Earring",
+        left_ring   =   "Toreador's Ring",
+        right_ring  =   "Toreador's Ring",
+        back        =   "Cuchulain's Mantle"
+}   
 
-    sets.lockstyle = {
-        main        = "Spharai",
-        sub         = "",
-        ammo        = "Black Tathlum",
-        head        = "",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        legs        = "Byakko's Haidate",
-        feet        = "Fuma Sune-Ate"
-    }
- 
-     -- idle set 
-		sets.idle = {
-		main=		"Spharai",
-		ammo=		"Black Tathlum",
-		head=		"Melee Crown +1",
-		body=		"Mel. Cyclas +1",
-		hands=		"Mel. Gloves +1",
-		legs=		"Mel. Hose +1",
-		feet=		"Hermes' Sandals +1",
-		neck=		"Evasion Torque",
-		waist=		"Black Belt",
-		left_ear=	"Novia Earring",
-		right_ear=	"Triton Earring",
-		left_ring=	"Succor Ring",
-		right_ring=	"Defending Ring",
-		back=		"Shadow Mantle",
+    -- full evasion
+    sets.eva        =   {
+        ammo        =   "White Tathlum",
+        head        =   "Gnole Crown",
+        body        =   "Scp. Harness +1",
+        hands       =   "Denali Wristbands",
+        legs        =   "Denali Kecks",
+        feet        =   "Herald's Gaiters",
+        neck        =   "Evasion Torque",
+        waist       =   "Scouter's Rope",
+        left_ear    =   "Triton Earring",
+        right_ear   =   "Triton Earring",
+        left_ring   =   "Wivre Ring +1",
+        right_ring  =   "Wivre Ring +1",
+        back        =   "Boxer's Mantle"
 }
- 
-     -- normal hasted attack set 
-    sets.Attack = {
-        main        = "Spharai",
-        ammo        = "Black Tathlum",
-        head        = "Walahra Turban",
-        neck        = "Faith Torque",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Toreador's Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Black Belt",
-        legs        = "Byakko's Haidate",
-        feet        = "Fuma Sune-Ate"
-    }
-  
-     -- Accuracy attack set 
-    sets.Accuracy = {
-        main        = "Spharai",
-        ammo        = "Black Tathlum",
-        head        = "Optical Hat",
-        neck        = "Faith Torque",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Toreador's Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cuchulain's Mantle",
-        waist       = "Black Belt",
-        legs        = "Byakko's Haidate",
-        feet        = "Fuma Sune-Ate"
-    }
- 
-     -- Evasion set 
-    sets.Evasion = {
-        main        = "Spharai",
-        ammo        = "Fenrir's Stone",
-        head        = "Gnole Crown",
-        neck        = "Evasion Torque",
-        left_ear    = "Triton Earring",
-        right_ear   = "Novia Earring",
-        body        = "Antares Harness",
-        hands       = "Denali Wristbands",
-        left_ring   = "Succor Ring",
-        right_ring  = "Defending Ring",
-        back        = "Boxer's Mantle",
-        waist       = "Black Belt",
-        legs        = "Temple Hose",
-        feet        = "Temple Gaiters"
-    }
- 	
-     -- fast cast set 
-    sets.fc         = {
-		left_ear    = "Loquac. Earring",
-        back        = "Warlock's Mantle",
-		legs        = "",
-        feet        = ""
+
+    -- specialized TP sets
+    
+    sets.footwork   =   {
+        legs        =   "",
+        feet        =   "Kyoshu Kyahan"
     }
       
-	 -- white enfeebling set
-    sets.whiteenfeebling = {
-        head        = "Temple Crown",
-        neck        = "Enfeebling Torque",
-        left_ear    = "Enfeebling Earring",
-		right_ear   = "Celestial Earring",
-        body        = "Kirin's Osode",
-        hands       = "Dusk Gloves +1",
-		left_ring   = "Celestial Ring",
-        right_ring  = "Celestial Ring",
-        back        = "Altruistic Cape",
-		waist       = "Sonic Belt +1",
-        legs        = "Homam Cosciales",
-        feet        = "Homam Gambieras"
-    }
-
-     -- Normal Enhancing Magic set (Extra MND for Stoneskin handled in Casting Function section)
-    sets.enhancing = {
-        main        = "Kirin's Pole",
-        sub         = "Reign Grip",
-		ammo        = "White Tathlum",
-        head        = "Temple Crown",
-        neck        = "Faith Torque",
-        left_ear    = "Celestial Earring",
-        right_ear   = "Celestial Earring",
-        body        = "Kirin's Osode",
-        hands       = "Denali Wristbands",
-        left_ring   = "Celestial Ring",
-        right_ring  = "Celestial Ring",
-        back        = "Melee Cape",
-        waist       = "Pythia Sash +1",
-        legs        = "Temple Hose",
-        feet        = "Temple Gaiters"
-    }
-       
-     -- Healing Magic Potency set
-    sets.heal = {
-        main        = "",
-		sub         = "",
-		ammo        = "White Tathlum",
-        head        = "Temple Crown",
-        neck        = "Faith Torque",
-        left_ear    = "Roundel Earring",
-        right_ear   = "Celestial Earring",
-        body        = "Kirin's Osode",
-        left_ring   = "Celestial Ring",
-        right_ring  = "Celestial Ring",
-        back        = "Altruistic Cape",
-        waist       = "Pythia Sash +1",
-        legs        = "Clr. Pantaln. +1",
-        feet        = "Blessed Pumps +1"
-    }
-	
-     -- Raise recast reduction set
-    sets.raise = {
-        main        = "",
-		sub         = "",
-		ammo        = "Hedgehog Bomb",
-        head        = "Walahra Turban",
-		neck		= "Tiercel Necklace",
-        left_ear    = "Loquac. Earring",
-        right_ear   = "Novia Earring",
-        body        = "",
-        hands       = "",
-        left_ring   = "Celestial Ring",
-        right_ring  = "Defending Ring",
-        back        = "Altruistic Cape",
-        waist       = "Black Belt",
-        legs        = "Byakko's Haidate",
-        feet        = "Fuma Sune-Ate"
-    }
- 
-     -- HMP+ set for resting
+    -- our resting set is for hMP.
     sets.rest = {
-		ammo		= "White Tathlum",
-		head        = "Genbu's Kabuto",
-        neck        = "Bloodbead Gorget",
-        left_ear    = "Relaxing Earring",
-        right_ear   = "Cassie Earring",
-        body        = "Mel. Cyclas +1",
-        hands       = "Mel. Gloves +1",
-        left_ring   = "Bloodbead Ring",
-        right_ring  = "Bomb Queen Ring",
-        back        = "Melee Cape",
-        waist       = "Ocean Sash",
-        legs        = "Mel. Hose +1",
-        feet        = "Marine M Boots" 
-	}
-	
-	-- Shoulder Tackle WS set
-    sets.ST = {
-		ammo		= "Black Tathlum",
-		head        = "Maat's Cap",
-        neck        = "Fotia Gorget",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Virtuoso Belt",
-        legs        = "Hachiryu Haidate",
-        feet        = "Denali Gamashes"
+        body        = "Melee Cyclas +1",
+        neck        = "",
+        left_ear    = "Sanative Earring",
+        right_ear   = "",
+        hands       = "",
+        left_ring   = "",
+        right_ring  = "",
+        waist       = "",
+		feet		= "",
+		back		= "Melee Cape"
     }
-			
-	-- Raging Fists WS set
-    sets.RF = {
-		ammo		= "Black Tathlum",
-		head        = "Gnadbhod's Helm",
-        neck        = "Fotia Gorget",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Virtuoso Belt",
-        legs        = "Hachiryu Haidate",
-        feet        = "Denali Gamashes"
-    }
-					
-	-- Howling Fist WS set
-    sets.HF = {
-		ammo		= "Black Tathlum",
-		head        = "Gnadbhod's Helm",
-        neck        = "Fotia Gorget",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Kirin's Osode",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Warwolf Belt",
-        legs        = "Hachiryu Haidate",
-        feet        = "Denali Gamashes"
-    }
-		
-	-- Dragon Kick WS set
-    sets.DK = {
-		ammo		= "Black Tathlum",
-		head        = "Gnadbhod's Helm",
-        neck        = "Fotia Gorget",
-        left_ear    = "Harmonius Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Kirin's Osode",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Black Belt",
-        legs        = "Hachiryu Haidate",
-        feet        = "Denali Gamashes"
-    }
-	
-	-- Asuran Fists WS set
-    sets.AF = {
-		ammo		= "Black Tathlum",
-		head        = "Gnadbhod's Helm",
-        neck        = "Fotia Gorget",
-        left_ear    = "Merman's Earring",
-        right_ear   = "Pixie Earring",
-        body        = "Hachiryu Haramaki",
-        hands       = "Ochiudo's Kote",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Virtuoso Belt",
-        legs        = "Shura Haidate +1",
-        feet        = "Denali Gamashes"
-    }
+ 
+     -- stacking strength for Final Heaven
+	 
+    sets.finalheaven = {
+        ammo        =   "Black Tathlum",
+        head        =   "Maat's Cap",
+        body        =   "Kirin's Osode",
+        hands       =   "Alkyoneus's Bracelets",
+        legs        =   "Hachiryu Haidate",
+        feet        =   "Agrona's Leggings",
+        neck        =   "Fotia Gorget",
+        waist       =   "Black Belt",
+        left_ear    =   "Brutal Earring",
+        right_ear   =   "Harmonius Earring",
+        left_ring   =   "Rajas Ring",
+        right_ring  =   "Flame Ring",
+        back        =   "Cerb. Mantle +1"
+}
+    
+    -- Dragon Kick: STR50% DEX50%
+    sets.dragonkick =   {
+        ammo        =   "Black Tathlum",
+        head        =   "Maat's Cap",
+        body        =   "Hachiryu Haramaki",
+        hands       =   "Alkyoneus's Bracelets",
+        legs        =   "Hachiryu Haidate",
+        feet        =   "Denali Gamashes",
+        neck        =   "Fotia Gorget",
+        waist       =   "Black Belt",
+        left_ear    =   "Brutal Earring",
+        right_ear   =   "Harmonius Earring",
+        left_ring   =   "Rajas Ring",
+        right_ring  =   "Flame Ring",
+        back        =   "Cerb. Mantle +1",
 
-		-- Final Heaven WS set
-    sets.FH = {
-		ammo		= "Black Tathlum",
-		head        = "Gnadbhod's Helm",
-        neck        = "Fotia Gorget",
-        left_ear    = "Harmonius Earring",
-        right_ear   = "Brutal Earring",
-        body        = "Kirin's Osode",
-        hands       = "Alkyoneus's Brc.",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Strigoi Ring",
-        back        = "Cerb. Mantle +1",
-        waist       = "Black Belt",
-        legs        = "Shura Haidate +1",
-        feet        = "Denali Gamashes"
     }
+    
+	-- stacking more str for other WSs
+	 
+    sets.ws = {
+        ammo        =   "Black Tathlum",
+        head        =   "Maat's Cap",
+        body        =   "Kirin's Osode",
+        hands       =   "Alkyoneus's Bracelets",
+        legs        =   "Hachiryu Haidate",
+        feet        =   "Denali Gamashes",
+        neck        =   "Fotia Gorget",
+        waist       =   "Black Belt",
+        left_ear    =   "Harmonius Earring",
+        right_ear   =   "Harmonius Earring",
+        left_ring   =   "Harmonius Ring",
+        right_ring  =   "Flame Ring",
+        back        =   "Cerb. Mantle +1"
+    }
+ 
+     -- chakra set with +VIT
+    sets.chakra={
+        ammo        =   "Bibiki Seashell",
+        head        =   "Genbu's Kabuto",
+        body        =   "Temple Cyclas +1",
+        hands       =   "Melee Gloves +1",
+        legs        =   "Kensei Sitabaki",
+        feet        =   "Creek M Clomps",
+        neck        =   "Fortitude Torque",
+        waist       =   "Warwolf Belt",
+        left_ear    =   "Robust Earring",
+        right_ear   =   "Cassie Earring",
+        left_ring   =   "Corneus Ring",
+        right_ring  =   "Mercenary's Ring",
+        back        =   "Melee Cape",
+}
 
-	-- Chakra set
-    sets.Chakra = {
-		ammo		= "Bibiki Seashell",
-		head        = "Genbu's Kabuto",
-        neck        = "Fortitude Torque",
-        left_ear    = "Robust Earring +1",
-        right_ear   = "Robust Earring +1",
-        body        = "Temple Cyclas",
-        hands       = "Mel. Gloves +1",
-        left_ring   = "Robust Ring +1",
-        right_ring  = "Robust Ring +1",
-        back        = "Melee Cape",
-        waist       = "Warwolf Belt",
-        legs        = "Kensei Sitabaki",
-        feet        = "Fuma Sune-Ate"
+    -- chi blast set with +MND
+    sets.chiblast   =   {
+        ammo        =   "Black Tathlum",
+        head        =   "Temple Crown",
+        body        =   "Kirin's Osode",
+        hands       =   "Denali Wristbands",
+        legs        =   "Prince's Slops",
+        feet        =   "Suzaku's sune-ate",
+        neck        =   "Faith Torque",
+        waist       =   "Pythia Sash +1",
+        left_ear    =   "Celestial Earring",
+        right_ear   =   "Celestial Earring",
+        left_ring   =   "Celestial Ring",
+        right_ring  =   "Celestial Ring",
+        back        =   "Melee Cape"
     }
-	
-	-- Waltz set
-    sets.Waltz = {
-		ammo		= "Tsar's Egg",
-		head        = "Maat's Cap",
-        neck        = "Temp. Torque",
-        left_ear    = "Melody Earring +1",
-        right_ear   = "Melody Earring +1",
-        body        = "Kirin's Osode",
-        hands       = "Marine M Gloves",
-        left_ring   = "Heavens Ring +1",
-        right_ring  = "Heavens Ring +1",
-        back        = "Melee Cape",
-        waist       = "Corsette +1",
-        legs        = "Custom Slacks",
-        feet        = "Fuma Sune-Ate"
+    
+    -- counterstance set - max out guarding/counter
+    sets.counter    =   {
+        head        =   "Gnole Crown",
+        body        =   "Cobra Harness",
+        hands       =   "",
+        legs        =   "Temple Hose +1",
+        feet        =   "Melee Gaiters +1",
+        back        =   "Boxer's Mantle",
+        ring1       =   "",
+        ring2       =   "",
+        ear1        =   "",
+        ear2        =   ""
     }
-	
-	-- Chi Blast set
-    sets.ChiBlast = {
-		ammo		= "White Tathlum",
-		head        = "Temple Crown",
-        neck        = "Faith Torque",
-        left_ear    = "Celestial Earring",
-        right_ear   = "Novia Earring",
-        body        = "Kirin's Osode",
-        hands       = "Denali Wristbands",
-        left_ring   = "Celestial Ring",
-        right_ring  = "Celestial Ring",
-        back        = "Melee Cape",
-        waist       = "Pythia Sash +1",
-        legs        = "Temple Hose",
-        feet        = "Suzaku's Sune-Ate"
+   
+    -- Utsusemi casting set - maximize ninjutsu skill and haste.
+    sets.utsu = {
+        neck        =   "Ninjutsu Torque",
+        left_ear    =   "Ninjutsu Earring",
+		back		=   "Astute Cape"
     }
-
-	-- Boost set
-    sets.Boost = {
-		hands        = "Temple Gloves",
+ 
+     sets.fc = {
+        ammo        =   "White Tathlum",
+        head        =   "Gnole Crown",
+        body        =   "Scp. Harness +1",
+        hands       =   "Denali Wristbands",
+        legs        =   "Byakko's Haidate",
+        feet        =   "Enkidu's Leggings",
+        neck        =   "Tiercel Necklace",
+        waist       =   "Black Belt",
+        left_ear    =   "Triton Earring",
+        right_ear   =   "Loquac. Earring",
+        left_ring   =   "Shadow Ring",
+        right_ring  =   "Patronus Ring",
+        back        =   "Boxer's Mantle"
     }
-	
-	-- Dodge set
-    sets.Dodge = {
-        feet        = "Temple Gaiters"
-    }
-		
-	-- Focus set
-    sets.Focus = {
-		head        = "Temple Crown",
-    }
-	
-	-- MP down set for job-change or GS-load initialization
-	sets.mpdown = {        
-		left_ear	= "Cassie Earring",
-		right_ear	= "Intruder Earring",
-		left_ring	= "Bloodbead Ring"
-    }
-	
+ 
  end
  
- --[[ *************
-  Equip functions
-*************** --]]
+ --[[ ******************************************************
+  Equip functions - put on the sets we defined above, and
+ echo a note to our chat log so we know it worked.
+****************************************************** --]]
  
- -- equip idle set
+ -- equip our idle set for standing around
  function equip_idle()
-    if world.time <= 1080 and world.time >= 360 and player.hpp < 96 then
-		windower.add_to_chat(8,'[Idle Fists with +7 HP/tic restored]')
-		equip(sets.idle,{head="Sol Cap",neck="Orochi Nodowa +1",body="Mel. Cyclas +1",hands="Feronia's Bangles",waist="Lycopodium Sash"})
-		
-		elseif player.hpp < 96 then
-			windower.add_to_chat(8,'[Idle Fists with +3 HP/tic restored]')
-			equip(sets.idle,{head="Sol Cap",neck="Orochi Nodowa +1",body="Mel. Cyclas +1"})
-		
-		else
-			windower.add_to_chat(8,'[Idle Fists]')
-			equip(sets.idle)
+     windower.add_to_chat(8,'[Idle]')
+  	if world.time <= 1080 and world.time >= 360 then
+		windower.add_to_chat(8,"[Daylight Regen]")
+		equip(sets.idle,sets.daylight)
+    else
+        equip(sets.idle)
+		end
 	end
 
-	if world.zone == "Bastok Mines" or world.zone == "Bastok Markets" or world.zone == "Metalworks" or world.zone == "Port Bastok" then
-		equip(sets.idle,{body="Republic Aketon"})
-		windower.add_to_chat(8,"[National Aketon is aket-on!]")
-	else end	
-end
+-- equip our engaged set. if footwork is not active, reset footwork flag and unequip that set.
 
--- equip attack/haste set
-function equip_Attackmode(spell)
-	if world.time <= 1080 and world.time >= 360 and player.equipment.main == "Spharai" and mode == 'Attack' then
-		 windower.add_to_chat(8,"[Spharai in the daytime: [" .. mode .. "] mode is selected!]")
-		 equip(sets[mode],{left_ear="Fenrir's Earring",waist="Black Belt"})
-		 
-	elseif player.equipment.main == "Spharai" and mode == 'Attack' then
-			 windower.add_to_chat(8,"[Spharai at night: [" .. mode .. "] mode is selected!]")
-			 equip(sets[mode])
-		 
-	else	 
-		windower.add_to_chat(8,"[Monk's [" .. mode .. "] mode is selected!]")
-		equip(sets[mode])
-	end
-end
-
--- equip  White Enfeebling Magic set
-function equip_whiteenfeebling(spell)
-    windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
-    equip(sets.whiteenfeebling)
-end
-
--- equip Enfeebling Magic set
-function equip_enfeebling(spell)
-    windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
-    equip(sets.enfeebling)
-end
-
--- equip Standard Enhancing Magic set
-function equip_enhancing(spell)
-	if spell.english == "Stoneskin" then
-			 windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
-			 equip(sets.enhancing,{head="Maat's Cap",neck="Stone Gorget",body="Kirin's Osode"})
-	else		 
-		windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
-		equip(sets.enhancing)
-	end
-end
-
--- equip Healing Magic set
-function equip_heal(spell)
-	if  spell.english:contains('Raise') then 
-		windower.add_to_chat(8,'[Casting ' .. spell.english .. ', in low-recast-mode, with ' .. player.mp .. ' MP remaining]')
-		equip(sets.raise)
-				
-			elseif  spell.english:contains('Reraise') then 
-					windower.add_to_chat(8,'[Casting ' .. spell.english .. ', in low-recast-mode, with ' .. player.mp .. ' MP remaining]')
-					equip(sets.raise)
-					
-		elseif  player.hpp > 76 and spell.element == world.weather_element or spell.element == world.day_element then
-				windower.add_to_chat(8,'[Casting ' .. spell.english .. ', boosted by Hachirin-no-Obi, with ' .. player.mp .. ' MP remaining]')
-				equip(sets.heal,{waist="Hachirin-no-Obi"})
-		
-	else
-		windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
-		equip(sets.heal)
-	end
-end
-
--- equip HP resting set
-function equip_rest()
-    if player.hpp < 95 and world.time <= 1080 and world.time >= 360  then
-		windower.add_to_chat(8,"[Resting Monk... + 7 Regen]")
-		equip(sets.rest,{head="Sol Cap",neck="Orochi Nodowa +1",waist="Lycopodium Sash"})
-	elseif player.hpp < 95 then
-			windower.add_to_chat(8,"[Resting Monk... + 3 Regen]")
-			equip(sets.rest,{head="Sol Cap",neck="Orochi Nodowa +1"})	
-	else
-		windower.add_to_chat(8,"[Resting Monk...]")
-		equip(sets.rest)
-	end
-end
-
---[[ **************
- Casting functions 
-******************* --]]
- 
- -- Pre-Cast section for Magic and Abilities
- function precast(spell, spellMap, action)
-	 if spell.type:contains('Magic') then
-			windower.add_to_chat(8,'[- Pre-Cast Set Active -]')
-			equip(sets.fc)
-		elseif spell.type:contains('Ninjutsu') then
-			windower.add_to_chat(8,'[- Pre-Cast Set Active -]')
-			equip(sets.fc,{back="Shadow Mantle"})
-		end
-
-	if world.day_element == 'Dark' and spell.type:contains('Waltz') then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with " .. player.tp .. "TP -]")
-		equip(sets.Waltz,{Back="Shadow Mantle"})
-		elseif spell.type:contains('Waltz') then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " with " .. player.tp .. "TP -]")
-			 equip(sets.Waltz)
-	end	
-	
-	if spell.type:contains('Step') then
-		windower.add_to_chat(8,"[- Best get to Steppin'! " .. spell.name .. " with " .. player.tp .. "TP -]")
-		equip(sets.Accuracy)
-	end	
-		
-	if spell.name == 'Shoulder Tackle' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.ST,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Shoulder Tackle' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.ST)
-		end	
-					
-	if spell.name == 'Raging Fists' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.RF,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Raging Fists' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.RF)
-		end	
-									
-	if spell.name == 'Howling Fist' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.HF,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Howling Fist' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.HF)
-		end	
-				
-	if spell.name == 'Dragon Kick' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.DK,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Dragon Kick' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.DK)
-		end	
-				
-	if spell.name == 'Asuran Fists' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.AF,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Asuran Fists' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.AF)
-		end	
-				
-	if spell.name == 'Final Heaven' and world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-		equip(sets.FH,{left_ear="Fenrir's Earring"})
-		 elseif spell.name == 'Final Heaven' then
-			 windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-			 equip(sets.FH)
-		end
-
-	if spell.name == 'Dodge' then
-		windower.add_to_chat(8,'[- Fancy Feet +1 -]')
-		equip(sets.Dodge)
-		end
-	
-	if spell.name == 'Focus' then
-		windower.add_to_chat(8,'[- Free... your Mind. -]')
-		equip(sets.Focus)
-		end
-	
-	if world.day_element == 'Dark' and spell.name == 'Chakra' then
-		windower.add_to_chat(8,'[- MEGA-Chakra Ommm... Ommm... Omnomnom... -]')
-		equip(sets.Chakra,{back="Shadow Mantle"})
-		elseif spell.name == 'Chakra' then
-				windower.add_to_chat(8,'[- Chakra Ommm... Ommm... Omnomnom... -]')
-				equip(sets.Chakra)
-		end
-		
-	if spell.name == 'Boost' then
-		windower.add_to_chat(8,'[- HNNNGHHH! -]')
-		equip(sets.Boost)
-		end
-		
-	if spell.name == 'Chi Blast' then
-		windower.add_to_chat(8,'[- Pa-pa-pa-POWWWWERRR! -]')
-		equip(sets.ChiBlast)
-		else
-		
+function equip_engaged()
+    if ev == true then
+        windower.add_to_chat(8,'[Evasion]')
+        equip(sets.haste,sets.eva)
+    elseif acc == true then
+        windower.add_to_chat(8,'[Accuracy]')
+        equip(sets.haste,sets.accuracy)
+    else
+        equip(sets.idle,sets.haste)
     end
 end
  
- -- Midcast section
- function midcast(spell)
-    if spell.type:contains('Ninjutsu') then
-		windower.add_to_chat(8,'[Hasted Cast Set Active]')
-		equip(sets.recast,{back="Shadow Mantle"})
-		
-	elseif  spell.skill == 'Healing Magic' then
-			equip_heal(spell)
-	
-	elseif  spell.skill == 'Enhancing Magic' then
-			equip_enhancing(spell)
-		
-	elseif  spell.english == ("Slow") then
-			equip_whiteenfeebling(spell)
-	elseif  spell.english == ("Paralyze") then
-			equip_whiteenfeebling(spell)
-	elseif  spell.english == ("Silence") then
-			equip_whiteenfeebling(spell)
-	elseif  spell.english == ("Dia") then
-			equip_whiteenfeebling(spell)
-	elseif  spell.english == ("Dia II") then
-			equip_whiteenfeebling(spell)
-		
-		elseif  spell.skill == 'Enfeebling Magic' then
-				equip_enfeebling(spell) 
+ -- equip our WS set
+ function equip_ws(spell)
+    if spell.name == 'Final Heaven' then
+        equip(sets.finalheaven)
+    elseif spell.name == 'Dragon Kick' then
+        equip(sets.dragonkick)
+        if (buffactive['footwork']) then
+            equip(sets.footwork)
+        end
+    else
+        equip(sets.ws)
+    end
+    if world.time <= 1080 and world.time >= 360 then
+			windower.add_to_chat(8,"[Daylight Bonus - Fenrir Earring]")
+			equip({right_ear="Fenrir's Earring"})
     end
  end
  
- -- post-cast, return to idle
- function aftercast()
-    if player.status == 'Engaged' then
-        equip_Attackmode()
-    else
-         equip_idle()
-    end
+ -- equip our hMP set
+ function equip_rest()
+     windower.add_to_chat(8,'[Resting]')
+    equip(sets.rest)
 end
 
--- the status_change function runs automatically whenever a
--- engage, disengage, kneel, or stand event happens.  As a WHM we use this
--- to equip +hMP gear when we /heal, and return to idle gear when standing.
-function status_change(new,old)
-    if new == 'Engaged' then
-        equip_Attackmode()
-    elseif new == 'Resting' then
+-- pick between our idle set and engaged set, depending on
+-- whether we're currently engaged with a mob.
+function choose_set()
+    if player.status == 'Engaged' then
+		windower.add_to_chat(8,'[Engaged Mode Active]')
+        equip_engaged()
+		-- Extra Attack, Fenrir's Earring
+		if world.time <= 1080 and world.time >= 360 then
+			windower.add_to_chat(8,"[Engaged - Daylight Bonus]")
+			equip({right_ear="Fenrir's Earring"})
+		end
+        if (buffactive['footwork']) then
+            equip(sets.footwork)
+        end
+    elseif (buffactive['counterstance']) then
+            equip(sets.counter)
+    elseif player.status == 'Resting' then
 		equip_rest()
 	else
-         equip_idle()
+        equip_idle()	
     end
  end
  
- -- self_command function
- -- set up macro as:
- -- /console gs c Y
- --
- function self_command(m)
-     if m == "Y" then
-        equip_yellow()
-    elseif m == "M+" then
-        if mode == "Attack" then
-            mode = "Accuracy"
-        elseif
-            mode == "Accuracy" then
-			 mode = "Evasion"
-			 else
-			  mode = "Attack"
+ --[[ ******************************************************
+  Casting functions - these functions run automatically when
+ we cast a spell, use a job ability, rest for MP, and so on
+****************************************************** --]]
+ 
+ -- the precast function runs automatically BEFORE we
+ -- begin casting a spell or job ability.
+ function precast(spell, spellMap, action)
+    if spell.type == 'WeaponSkill' then
+        equip_ws(spell)
+    elseif spell.name == 'Boost' then
+        equip({hands="Temple Gloves"})
+    elseif spell.name == 'Focus' then
+        equip({head="Temple Crown"})
+    elseif spell.name == 'Chakra' then
+        windower.add_to_chat(8,'[Chakra]')
+        if world.day_element == 'Darksday' then
+            windower.add_to_chat(8,'[Chakra on Darksday - +Shadow Mantle]')
+            equip(sets.chakra,{back="Shadow Mantle"})
+        else
+            equip(sets.chakra)
         end
-         windower.add_to_chat(8,'[Attack mode: ' .. mode .. ']')
+	elseif spell.name == 'Chi Blast' then
+        windower.add_to_chat(8,'[Chi Blast]')    
+		equip(sets.engaged,sets.chiblast)
+    elseif spell.type:contains('Magic') or spell.type == 'Ninjutsu' then
+        equip(sets.fc)
+    else
+        choose_set()
     end
  end
  
- function buff_change(name,gain,eventArgs)
+ -- most of our abilities are either insta-cast or require
+ -- gearswaps at the start, so we don't do much mid-cast.
+ function midcast(spell)
+    if spell.name == 'Utsusemi: Ni' or spell.name == 'Utsusemi: Ichi' then
+        windower.add_to_chat(8,'[Utsusemi]')
+        equip(sets.utsu)
+    elseif spell.name == 'Chakra' then
+        windower.add_to_chat(8,'[Chakra]')
+        if world.day == 'Darksday' then
+            windower.add_to_chat(8,'[Darksday - Shadow Mantle]')
+            equip(sets.chakra,{back="Shadow Mantle"})
+        else
+            equip(sets.chakra)
+        end
+	elseif spell.name == 'Chi Blast' then
+        windower.add_to_chat(8,'[Chi Blast]')    
+		equip(sets.engaged,sets.chiblast)
+    else
+        choose_set()
+    end
+ end
+ 
+ -- when we're done with our spell or ability, return to either
+ -- our idle or engaged gear.
+ function aftercast(spell)
+     choose_set()
+end
 
-	if name == "Silence" and gain =="True" then
-		send_command('@input /item "Echo Drops" <me>')
+-- swap into hMP gear when we /heal, and return to idle gear
+-- when we stand up.
+function status_change(new,old)
+    if new == 'Resting' then
+        equip_rest()
+    else
+        choose_set()
+    end
+ end
+ 
+function buff_change(new,old)
+    if buffactive['Silence'] then
+        send_command('@ input /item "Echo Drops" <me>')
+        windower.add_to_chat(256,'[Silence Removed!]')
+    elseif buffactive['Curse'] then
+        send_command('@ input /item "Holy Water" <me>')
+        windower.add_to_chat(201,'[Curse Removed!]')
+    elseif buffactive['Doom'] then
+        send_command('@ input /item "Hallowed Water" <me>')
+        windower.add_to_chat(002,'[Doom Removed!]')
+    elseif buffactive['Blindness'] then
+        send_command('@ input /item "Remedy" <me>')
+        windower.add_to_chat(160,'[Blindness Removed!]')
+    elseif buffactive['Poison'] then
+        send_command('@ input /item "Antidote" <me>')
+        windower.add_to_chat(259,'[Poison Removed!]')
+	elseif buffactive['Paralyzed'] then
+		send_command('@ input /item "Remedy" <me>')
+		windower.add_to_chat(259,'[Paralysis Removed!]')
+    end
+	-- footwork gone > do another choose_set
+	if buffactive['Footwork'] then
+		footwork = true
+		choose_set()
+    else
+        footwork = false
+        choose_set()
 	end
-
 end
  
- --[[ *************
-  Run once
-*************** --]]
+function self_command(m)
+if m == "EVA" then
+        if ev == false then
+            ev = true
+            windower.add_to_chat(8,'[Evasion during combat: ON]')
+            choose_set()
+        else
+            ev = false
+            windower.add_to_chat(8,'[Evasion during combat: OFF]')
+            choose_set()
+        end
+	elseif m == "acc" then
+        if acc == false then
+            acc = true
+            windower.add_to_chat(8,'[Accuracy: ON]')
+            choose_set()
+        else
+            acc = false
+            windower.add_to_chat(8,'[Accuracy: OFF]')
+            choose_set()
+        end
+    end
+end
+
  
- -- Mode signifies which melee set the MNK will attack in. Default setting is Attack.
- mode = "Attack"
+ --[[ ******************************************************
+  Code that runs once, when we first swap to MNK job
+****************************************************** --]]
  
- -- Puts on lockstyle set, then switch to idle set.
- send_command('wait 1;gs equip lockstyle;wait 1;input /lockstyle on;wait1;gs equip mpdown;wait 0.5;gs equip idle')
- send_command('input /macro book 17; wait 0.1; input /macro set 1')
+-- ev determines whether we should wear our evasion gear in combat
+    ev          =   false
+
+-- acc determines whether we should wear our Accuracy gear in combat
+    acc         =   false
+    
+-- footwork determines whether or not footwork is active in combat
+
+    footwork    =   false
+
+ -- Puts on our fashion set, lockstyle it, then switch
+ -- to our idle set.
+    send_command('wait 1;gs equip fashion;wait 1;input /lockstyle on;wait 1;gs equip idle')
+    send_command('input /macro book 2; wait 0.1; input /macro set 1')
+    windower.add_to_chat(8,'[Evasion Mode: Deactivated]')
+    windower.add_to_chat(8,'[Accuracy Mode: Deactivated]')
+    windower.add_to_chat(8,'[Footwork: Deactivated]')
+	send_command('input //dp height')

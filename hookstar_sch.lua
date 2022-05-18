@@ -34,7 +34,7 @@
         main		= "Claustrum",
 		sub         = "Reign Grip",
         ammo        = "Hedgehog Bomb",
-        head        = "Sch. M.board +1",
+        head        = "Sch. M.board",
         neck        = "Beak Necklace +1",
         left_ear    = "Loquac. Earring",
         right_ear   = "Celestial Earring",

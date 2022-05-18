@@ -13,8 +13,6 @@
   Gearsets - define the various sets of gear we'll wear.
 ****************************************************** --]]
  
-
-
 function get_sets()
 
      -- fashion set is for looking nice while lockstyled.
@@ -77,9 +75,9 @@ function get_sets()
         neck        = "Shield torque",
 		left_ear    = "Merman's Earring",    
         right_ear   = "Ethereal Earring",
-        body        = "Valhalla Breastplate--",       -- Valhalla Breastplate
+        body        = "Valhalla Breastplate",       -- Valhalla Breastplate
 		hands       = "Iron Ram Dastanas",
-		left_ring   = "Patronus Ring",
+		left_ring   = "Minerva's Ring",
         right_ring  = "Succor Ring",               -- Shadow Ring in Darksday -10Magic Def Bonus
         waist       = "Resolute Belt",		
         back        = "Lamia Mantle +1",
@@ -95,11 +93,11 @@ function get_sets()
         right_ear   = "Ethereal Earring",
         body        = "Blood Scale Mail",
 		hands       = "Kaiser Handschuhs",
-		left_ring   = "Patronus Ring",
+		left_ring   = "Shadow Ring",
         right_ring  = "Succor Ring",           -- Shadow Ring in Darksday
 		waist       = "Resolute Belt",
         back        = "Boxer's Mantle",
-        legs        = "Blood Cuisses",
+        legs        = "Iron ram hose",
 		feet        = "Askar Gambieras"}
 		
 	sets.att.damage = {
@@ -173,7 +171,7 @@ function get_sets()
     sets.haste = {
         head        = "Walahra Turban",
         hands       = "Dusk Gloves +1",
-        waist       = "Velocious belt",
+        waist       = "Velocious Belt",
         legs        = "Homam Cosciales",
         feet        = "Dusk Ledelsens +1"}
      
@@ -211,7 +209,7 @@ function get_sets()
 	    left_ear    = "Hospitaler Earring",
 		right_ear   = "Knightly Earring",
         neck        = "Healing Torque",
-		waist       = "Velocious belt",
+		waist       = "Velocious Belt",
 		legs        = "Valor Breeches +1",
         left_ring   = "Patronus Ring",
         right_ring  = "Celestial Ring",
@@ -221,7 +219,7 @@ function get_sets()
 	sets.divine = {
 	    head        = "Walahra Turban",
         hands       = "Dusk Gloves +1",
-        waist       = "Velocious belt",
+        waist       = "Velocious Belt",
         legs        = "Homam Cosciales",
 	    left_ear    = "Divine Earring",
 		body        = "Gallant Surcoat +1",
@@ -271,7 +269,7 @@ function get_sets()
 		legs		= "Homam Cosciales",
 		feet		= "Homam Gambieras",
 		neck		= "Tempered Chain",          --Bloodbead Gorget
-		waist		= "Velocious belt",
+		waist		= "Velocious Belt",
 		left_ear	= "Harmonius Earring",
 		right_ear   = "Loquac. Earring",
 		left_ring	= "Patronus Ring",
@@ -301,7 +299,7 @@ function get_sets()
 		legs        = "Homam cosciales",
         feet		= "Homam Gambieras",
         neck        = "Peacock Amulet",
-		waist       = "Virtuoso Belt",
+		waist       = "Velocious Belt",
         left_ear    = "Diabolos's Earring",
         right_ear   = "Pixie Earring",
         left_ring   = "Toreador's Ring",

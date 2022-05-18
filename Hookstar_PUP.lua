@@ -12,21 +12,13 @@
 -- make sure you include your top-row equipment,
 -- especially if you use a ranged or throwing weapon.
     sets.fashion = {
-        main        = "Spharai",
-        sub         = empty,
-        range       = "Turbo Animator",
-        head        = "Sheep cap",
-        body        = "Hydra Doublet",
-        hands       = "Pantin Dastanas +1",
-        legs        = "Martial Slacks",
-        feet        = "Puppetry Babouches"
+
+		range		= "Turbo Animator",
+		ammo		= "Automat. Oil +2",
     }
 -- idle set is worn when we're standing around doing
 -- nothing.  we want movement speed and evasion.
     sets.idle = {
---        main        = "Hades Sainti +1",
-		range		= "Turbo Animator",
-		ammo		= "Automat. Oil +2",
         head        = "Spurrer Beret",
         neck        = "Shepherd's Chain", --mix coast bird
         left_ear    = "Triton Earring",
@@ -43,20 +35,18 @@
 -- our basic engaged set replaces some of our idle
 -- evasion slots with haste, dual wield, accuracy.
     sets.engaged = {
-		ammo		= "Automat. Oil +2",
         head        = "Spurrer Beret",
         neck        = "Faith Torque",
-        left_ear    = "Diabolos's Earring",
-        right_ear   = "Pixie Earring",
---        body        = "Pantin Tobe +1",
+        left_ear    = "Brutal Earring",
+        right_ear   = "Ethereal Earring",
         body        = "Enkidu's Harness",
         hands       = "Pantin Dastanas +1",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Toreador's Ring",
+        right_ring  = "Rajas Ring",
+        left_ring   = "Toreador's Ring",
         back        = "Pantin Cape",
-        waist       = "Velocious Belt", -- V belt?!
-        legs        = "Enkidu's Subligar",--storage
-        feet        = "Setanta's Led." --get
+        waist       = "Ninurta's Sash",
+        legs        = "Enkidu's Subligar",
+        feet        = "Setanta's Led."
     }
 -- our evasion set, when dodging is all that matters.
 -- this is very similar to our idle set, excapt we
@@ -194,13 +184,13 @@
         left_ear    = "Brutal Earring",
         right_ear   = "Harmonius Earring",
         body        = "Enkidu's Harness",
-        hands       = "Creek F Mitts",
-        left_ring   = "Rajas Ring",
-        right_ring  = "Harmonius Ring",
+        hands       = "Enkidu's Mittens",
+        left_ring   = "Strigoi Ring",
+        right_ring  = "Rajas Ring",
         back        = "Pantin Cape",
         waist       = "Potent Belt",
         legs        = "Enkidu's Subligar",
-        feet        = "Creek F Clomps"
+        feet        = "Setanta's Led."
     }
 -- ASURAN FISTS set with max :::
     sets.asuran = {
@@ -550,5 +540,5 @@ debugMsg(debug_info)
  acc = false
  banes = false
 -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set. 
- send_command('wait 1; input /equipset 020; wait 1; input /lockstyleset 020; wait 1; gs equip idle; wait 1; input /macro book 9; wait 1; input //lua l autocontrol;  wait 1; input //lua l pointwatch; wait 1; input //lua l PetTP; wait 1; input //ac hide')
+ send_command('wait 1; input /equipset 25; wait 1; input /lockstyleset 37; wait 1; gs equip idle; wait 1; input /macro book 9; wait 1; input //lua l autocontrol;  wait 1; input //lua l pointwatch; wait 1; input //lua l PetTP; wait 1; input //ac hide; input !myth')
  -- equipset 20 is the original wedding dress lockstyle

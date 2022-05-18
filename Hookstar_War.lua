@@ -86,9 +86,9 @@ function init_gear_sets()
 
   -- Weaponskill sets
   sets.precast.WS = {
-  ammo="Fire Bomblet", head="Hecatomb Cap +1", neck="Fotia Gorget", lear="Tmph. Earring +1", rear="Brutal Earring",
+  ammo="Fire Bomblet", head="Hecatomb Cap +1", neck="Fotia Gorget", lear="Harmonius Earring", rear="Brutal Earring",
   body="Nocturnus Mail", hands="Hct. Mittens +1", ring1="Flame Ring", ring2="Rajas Ring",
-  back="Cerb. Mantle +1", waist="Warrior's Stone", legs="War. Cuisses +1", feet="Hct. Leggings +1" }
+  back="Cuchulain's Mantle", waist="Warrior's Stone", legs="Hecatomb subligar +1", feet="Hct. Leggings +1" }
 
   -- Specific weaponskill sets.
   sets.precast.WS['Raging Rush'] = set_combine( sets.precast.Crit_WS, { neck="Ancient Torque", body="Zahak's Mail" } )
@@ -104,7 +104,7 @@ function init_gear_sets()
 
   -- Generic spell recast set
   sets.midcast.FastRecast = {
-  head="Walahra Turban", rear="Loquacious Earring", hands="Dusk Gloves +1", waist="Velocious Belt",
+  head="Walahra Turban", rear="Loquacious Earring", hands="Dusk Gloves +1", waist="Ninurta's Sash",
   legs="Byakko's Haidate", feet="Dusk Ledelsens +1", ring1="Blitz ring" }
     
   -- Specific spells
@@ -161,33 +161,33 @@ function init_gear_sets()
   -- Normal melee group
   sets.engaged = {
   ammo="Fire Bomblet", head="Nocturnus Helm", neck="Prudence Torque", body="Nocturnus Mail",
-  hands="Dusk Gloves +1", waist="Velocious Belt", back="Cerb. Mantle +1",  legs="Byakko's Haidate",
+  hands="Dusk Gloves +1", waist="Ninurta's Sash", back="Cerb. Mantle +1",  legs="Byakko's Haidate",
   feet="Dusk Ledelsens +1", lear="Assault Earring", rear="Brutal Earring", ring1="Blitz ring", ring2="Rajas Ring" }
 
   sets.engaged.GA = {
   ammo="White Tathlum", sub="Pole Grip", head="Walahra Turban", neck="Fortitude Torque", body="Nocturnus Mail",
-  hands="Dusk Gloves +1", waist="Velocious Belt", back="Cerb. Mantle +1",  legs="Byakko's Haidate",
+  hands="Dusk Gloves +1", waist="Ninurta's Sash", back="Cerb. Mantle +1",  legs="Byakko's Haidate",
   feet="Dusk Ledelsens +1", lear="Assault Earring", rear="Brutal Earring", ring1="Blitz ring", ring2="Rajas Ring" }
 
   sets.engaged.DualWield = {
   ammo="Fire Bomblet", head="Walahra Turban", neck="Fortitude Torque", body="Nocturnus Mail",
-  hands="Dusk Gloves +1", waist="Velocious Belt", back="Cerb. Mantle +1", rear="Brutal Earring",
+  hands="Dusk Gloves +1", waist="Ninurta's Sash", back="Cerb. Mantle +1", rear="Brutal Earring",
   legs="Byakko's Haidate", feet="Dusk Ledelsens +1", lear="Suppanomimi", ring1="Blitz ring", ring2="Rajas Ring" }
 
 
   sets.engaged.Acc = {
   ammo="Fire Bomblet", head="Walahra Turban", neck="Fortitude Torque", body="Nocturnus Mail", hands="Dusk Gloves +1",
-  waist="Velocious Belt", back="Cuchulain's Mantle",  legs="Byakko's Haidate", feet="Dusk Ledelsens +1",
+  waist="Ninurta's Sash", back="Cuchulain's Mantle",  legs="Byakko's Haidate", feet="Dusk Ledelsens +1",
   lear="Assault Earring", rear="Brutal Earring", ring1="Toreador's ring", ring2="Rajas Ring" }
 
   sets.engaged.GA.Acc = {
   ammo="Fire Bomblet", head="Walahra Turban", neck="Fortitude Torque", body="Nocturnus Mail", hands="Dusk Gloves +1",
-  waist="Velocious Belt", back="Cuchulain's Mantle",  legs="Byakko's Haidate", feet="Dusk Ledelsens +1",
+  waist="Ninurta's Sash", back="Cuchulain's Mantle",  legs="Byakko's Haidate", feet="Dusk Ledelsens +1",
   lear="Assault Earring", rear="Brutal Earring", ring1="Toreador's ring", ring2="Rajas Ring" }
 
   sets.engaged.DualWield.Acc = {
   ammo="Fire Bomblet", head="Walahra Turban", neck="Fortitude Torque", body="Nocturnus Mail", hands="Dusk Gloves +1",
-  waist="Velocious Belt", back="Cuchulain's Mantle", rear="Brutal Earring", legs="Byakko's Haidate",
+  waist="Ninurta's Sash", back="Cuchulain's Mantle", rear="Brutal Earring", legs="Byakko's Haidate",
   feet="Dusk Ledelsens +1", lear="Suppanomimi", ring1="Toreador's ring", ring2="Rajas Ring" }
 
   --------------------------------------
